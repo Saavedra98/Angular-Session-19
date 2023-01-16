@@ -1,1 +1,28 @@
-<p>home works!</p>
+<div class="container border border-black mt-8 p-5 mx-auto w-3/4 rounded">
+
+    <div class="titulo m-5 mb-8">
+        <h1 class="text-blue-800 text-center font-bold text-5xl ">POKEMONES</h1>
+
+    </div>
+
+
+    <div class="contenedor d-flex text-center">
+        <input type="email" class="form-control border border-black rounded p-2 w-2/4 mr-3"
+            placeholder="Buscar pokemon">
+        <button type="button"
+            class="bg-blue-700  hover:bg-blue-800 text-white font-semibold p-2 px-4  rounded ">Buscar</button>
+    </div>
+
+    <div class="pokemones mt-5">
+
+        <div class="grid grid-cols-4 gap-4">
+            <div *ngFor="let p of data" class="bg-blue-100">
+                <img src="{{p.image}}" alt="" width="100%">
+                <p class="text-center ">{{p.name}}</p>
+            </div> 
+        </div>
+
+    </div>
+
+
+</div>
