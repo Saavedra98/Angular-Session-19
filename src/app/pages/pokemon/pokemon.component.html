@@ -1,0 +1,21 @@
+    <div class="m-auto w-2/5 mt-10 rounded-md border border-black p-5 bg-emerald-100">
+        <h1 class="text-center text-4xl font-bold uppercase" >{{pokeDetail[0]?.forms[0].name}}</h1>
+
+        <div class="contenedor flex">
+            <div class="">
+                <img class="h-48 m-2 scale-125" src={{pokeDetail[0]?.sprites.front_shiny}}>
+            </div>
+            
+            <div class="text-2xl mt-5">
+                
+                <p class="text-2xl font-mono font-bold">Habilidad 1: <span class="text-lg font-thin"> {{pokeDetail[0]?.abilities[0].ability.name}} </span> </p>
+                <p class="text-2xl font-mono font-bold">habilidad 2: <span class="text-lg font-thin">  {{pokeDetail[0]?.abilities[1].ability.name}} </span> </p>
+                <p class="text-2xl font-mono font-bold">Experiencia Base: <span class="text-lg font-thin"> {{pokeDetail[0]?.base_experience}} </span> </p>
+    
+                <button (click)="regresar()" class="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-1 px-4 rounded mt-5 ">Regresar</button>
+            </div>
+        </div>
+
+        
+        
+    </div>

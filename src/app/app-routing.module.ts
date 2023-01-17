@@ -1,9 +1,11 @@
 import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PokemonComponent } from './pages/pokemon/pokemon.component';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent}
+  {path:'', component:HomeComponent},
+  {path:'pokemon/:id', component:PokemonComponent}
 
 ];
 

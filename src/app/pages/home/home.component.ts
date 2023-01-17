@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
+import { data } from 'src/app/data.module';
 import { PokedexService } from 'src/app/services/pokedex.service';
 
 @Component({
@@ -10,40 +11,29 @@ import { PokedexService } from 'src/app/services/pokedex.service';
 })
 export class HomeComponent implements OnInit {
 
+  almacen:data[]=[]
+  mostrar=false;
 
-  data: any[] = [];
-  //datasource = new
-  pokemons = [];
-
-  constructor(private pokedex: PokedexService) { }
-
-  ngOnInit(): void {
-    this.getPokemons()
+  buscar(id:string){
+    this.route.navigate(['/pokemon', id])
+  }
+  constructor(private baseD:PokedexService, private route:Router, router:ActivatedRoute) { }
+  ordenar(){
+    this.mostrar=!this.mostrar
+    this.almacen=this.almacen.sort((a:data,b:data)=>(a.id>b.id)? 1:-1)
   }
 
-  getPokemons() {
+  ngOnInit(): void {
 
-    let pokemonData;
-
-    for (let i = 1; i < 150; i++) {
-
-      this.pokedex.getPokemon(String(i)).subscribe(
-        res => {
-          pokemonData = {
-            position: i,
-            image: res.sprites.front_default,
-            name: res.name
-          }
-          this.data.push(pokemonData)
-          console.log(res);
-        },
-        err => {
-
+    for (let i=1; i<=150; i++){
+      this.baseD.BD(String(i)).subscribe(x=>{
+        try{
+          this.almacen.push(new data(x.nombre, x.id, x.sprites.front_default, x.types[0].type.name, x.type[1].type.name))
+        }catch{
+          this.almacen.push(new data(x.nombre, x.id, x.sprites.front_default, x.types[0].type.name, ''))
         }
-      )
-
+      })
     }
-
   }
 
 
